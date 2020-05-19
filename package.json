@@ -1,0 +1,30 @@
+{
+  "name": "1tv-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malininss/mews.git"
+  },
+  "author": "malininss@yandex.ru",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/malininss/mews/issues"
+  },
+  "homepage": "https://github.com/malininss/mews#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "node-sass": "^4.14.1"
+  },
+  "dependencies": {
+    "roboto-fontface": "^0.10.0"
+  }
+}

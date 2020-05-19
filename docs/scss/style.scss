@@ -1,0 +1,382 @@
+@import 'fonts.scss';
+
+$normal-blue-color: #0757A8;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
+// h2 {
+//   margin-top: 20px;
+//   margin-bottom: 10px;
+// }
+
+.wrapper {
+  max-width: 1024px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.sub-menu-arrow {
+  position: relative;
+
+  &::after {
+    display: block;
+    content: '';
+    width: 6px;
+    height: 4px;
+    position: absolute;
+    background: url(../img/arrow.svg) no-repeat;
+    right: 8px;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
+
+.header {
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+  }
+
+  &__left-column {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 17px;
+  }
+
+  &__logo-img {
+    padding: 0 17px;
+  }
+
+  &__logo-text {
+    font-family: 'Roboto-Condensed';
+    font-weight: bold;
+    font-size: 22px;    
+    letter-spacing: 0.995652px;
+    text-transform: uppercase;
+    color: #0757A8;
+  }
+
+  &__info-container {
+    display: flex;
+    margin-top: 8px;
+  }
+
+  &__date {
+    font-size: 12px;
+    font-weight: 300;
+    color: #55697E;
+    margin-right: 56px;
+  }
+
+  &__region {
+    color: #0757A8;
+    font-size: 12px;
+    position: relative;
+    margin-left: 12px;
+
+    &::before {
+      display: block;
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: url(../img/marker.svg) no-repeat;
+      left: -12px;
+    }
+
+    &::after {
+      display: block;
+      content: '';
+      width: 6px;
+      height: 4px;
+      position: absolute;
+      background: url(../img/arrow.svg) no-repeat;
+      right: -7px;
+      top: 6px;
+    }
+  }
+  
+  &__social {
+    margin-top: 8px;
+
+    img:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+
+  &__menu-container {
+    margin-top: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
+  &__menu {
+    font-family: 'Roboto-Condensed';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+  }
+
+  &__menu-items {
+    list-style-type: none;
+    display: flex;
+    margin-left: 56px;
+  }
+
+  &__menu-item {
+    &:hover {
+      .header__sub-menu-container {
+        opacity: 1;
+        visibility: visible;
+      }
+      
+    }
+  }
+
+  &__menu-link {
+    color: #1B354A;
+    text-decoration: none;
+    padding: 6px 6px;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+
+    &:hover {
+      border: 2px solid #0757A8;
+      border-radius: 2px;
+    }
+
+    &.sub-menu-arrow {
+      padding-right: 16px;
+    }
+  }
+
+  &__sub-menu-container {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    margin-top: 14px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #EDF1F6;
+    transition: all 0.5s;
+  }
+
+  &__sub-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    list-style-type: none;
+  }
+
+  &__sub-menu-item {
+
+    &:first-child {
+      margin-left: 64px;
+    }
+
+    &:last-child {
+      margin-right: 64px;
+    }
+  }
+
+  &__sub-menu-link {
+    display: flex;
+    position: relative;
+    text-decoration: none;
+    color: #0C0D20;
+    padding-left: 20px;
+  }
+
+  &__sub-menu-icon {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 0;
+  }
+  &__search-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__search-item {
+    margin-left: 34px;
+  }
+}
+
+.live-tv {
+  display: flex;
+  margin-top: 40px;
+
+  &__widget-container {
+    width: calc(100% - 312px);
+    height: 1000px;
+    padding-right: 20px;
+  }
+  
+  &__right-adv {
+    margin-top: 68px;
+    width: 312px;
+  }
+}
+
+.tv-widget {
+  &__title {
+    font-weight: normal;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  &__sub-title {
+    font-weight: normal;
+    font-size: 16px;
+    color: #0757A8;
+    margin-bottom: 15px;
+  }
+
+  &__player {
+    width: 100%;
+    height: 398px;
+    background: lightgrey;
+  }
+
+  &__schedule {
+    margin-top: 40px;
+  }
+
+  &__schedule-title {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: normal;
+  }
+
+  &__schedule-corousel {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    height: 76px;
+  }
+
+  &__left-arrow-container {
+    width: 30px;
+    height: 70px;
+    background: #fff;
+    position: absolute;
+    box-shadow: 19px 0px 12px 0px rgba(255, 255, 255, 1);
+    top: 0;
+    left: 0;
+    // transform: translate(0, -25%);
+  }
+
+  &__right-arrow-container {
+    width: 30px;
+    height: 120px;
+    background: #fff;
+    position: absolute;
+    box-shadow: -19px 0px 12px 0px rgba(255, 255, 255, 1);
+    right: 0;
+    top: 0;
+    // transform: translate(0, -25%);
+  }
+
+  &__arrow-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: $normal-blue-color;
+  }
+
+
+
+
+
+
+
+
+
+
+  &__schedule-items {
+    display: flex;
+    position: absolute;
+    z-index: -100;
+  }
+  
+  &__schedule-item {
+    min-width: 60px;
+    width: 60px;
+    margin-right: 26px;
+    padding: 4px;
+    height: 70px;
+    background: $normal-blue-color;
+    text-align: center;
+    color: #fff;
+  }
+
+  &__day {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: bold;
+  }
+
+  &__mounth {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: bold;
+  }
+  
+  &__line {
+    width: 100%;
+    height: 1px;
+    background: #fff;
+  }
+
+  &__weekday {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.live-tv__banner {
+  width: 100%;
+  height: 600px;
+  background-color: lightgrey;
+}
+main {
+  height: 100vh;
+}
