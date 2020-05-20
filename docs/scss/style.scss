@@ -18,6 +18,10 @@ a {
   text-decoration: none;
 }
 
+p {
+  margin: 10px 0 20px 0;
+}
+
 h2.center-title {
   font-style: normal;
   font-weight: normal;
@@ -608,7 +612,7 @@ h2.center-title {
     position: relative;
     border-radius: 4px;
     margin-bottom: 20px;
-
+    overflow: hidden;
 
     &__card-img {
       display: flex;
@@ -654,7 +658,7 @@ h2.center-title {
     }
 
     &:nth-child(5), &:nth-child(6) {
-      width: calc(33.3333% - 13.5px);
+      width: calc((100% - 314px - 40px) / 2);
       padding: 10px;
       background-color: #0D1F32;
       height: 270px;
@@ -707,7 +711,9 @@ h2.center-title {
   }
 
   &__adv-block {
-    width: calc(33.33333% - 13.5px);
+    width: 314px;
+    // width: calc(33.333% - 14px);
+    // flex-shrink: 1;
     height: 270px;
     background-color: lightgrey;
     margin-right: 0 !important;
@@ -733,17 +739,23 @@ h2.center-title {
   &__horisont-banner {
     text-align: center;
     margin: 40px 0;
+    
+    img {
+      width: 100%;
+    }
   }
 
   &__last-adv-container {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   &__last-adv-container-item {
-    width: 33.3333%;
+    width: 314px;
     height: 279px;
     background: lightgrey;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 
     &:not(:last-child) {
       margin-right: 20px;
@@ -778,3 +790,199 @@ h2.center-title {
   }
 }
 
+
+
+
+
+.footer {
+  // min-height: 1000px;
+  background-color: #00162E;
+  color: #fff;
+
+  &__columns {
+    display: flex;
+    padding: 40px;
+  }
+
+  &__left-column {
+    width: calc(33.333333% - 10px);
+    margin-right: 20px;
+  }
+
+
+  &__right-column {
+    width: calc(66.66666% - 10px);
+  }
+
+  &__logo-container {
+    margin-bottom: 60px;
+  }
+
+  &__logo {
+    padding: 0 4px 10px 4px;
+  }
+
+  &__logo-text {
+    font-family: 'Roboto-Condensed';
+    font-weight: bold;
+    font-size: 22px;    
+    letter-spacing: 0.995652px;
+    text-transform: uppercase;
+  }
+
+  &__mobile-description {
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  &__mobile-description-logo {
+    width: 51px;
+    height: 51px;
+    margin-right: 20px;
+  }
+
+  &__mobile-description-text {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  &__mobile-all {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  &__mobile-googleplay {
+    margin-top: 10px;
+  }
+  
+  &__mobile-all {
+    margin-top: 20px;
+  }
+
+  &__mobile-all-link {
+    color: #fff;
+    position: relative;
+
+    &::before {
+      display: block;
+      content: '';
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      right: -22px;
+      bottom: 0;
+      background: url('../img/right-circle-arrow.svg') no-repeat;
+    }
+  }
+
+  &__notice-button-block {
+    margin-top: 60px;
+  }
+
+  &__notice-button {
+    display: block;
+    position: relative;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    margin-top: 20px;
+    max-width: 173px;
+    padding: 10px 10px 10px 46px;
+
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+
+    &::before {
+      display: block;
+      content: '';
+      position: absolute;
+      width: 26px;
+      height: 20px;
+      left: 8px;
+      top: 13px;
+      background: url('../img/bell-icon.svg')
+    }
+  }
+
+  &__social-block {
+    margin-top: 60px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    max-width: 173px;
+  }
+
+  &__social-block-text {
+    margin-bottom: 20px;
+  }
+
+  &__social-link {
+    margin-right: 30px;
+    // padding-bottom: 20px;
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  &__menu-column {
+    width: 50%;
+    margin-right: 20px;
+  }
+
+  &__menu-link {
+    display: block;
+    color: #fff;
+    padding: 15px 0;
+  }
+
+  &__forein-broadcasting {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    position: relative;
+    margin-left: 30px;
+
+    &::before {
+      display: block;
+      content: '';
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      left: -30px;
+      top: -4px;
+      background: url('../img/eath-icon.svg') no-repeat;
+    }
+  }
+
+  &__legal-text {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 15px;
+    margin-top: 60px;
+
+    color: #A4C5CC;
+
+    a {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 12px;
+      color: #fff;
+    }
+  }
+  
+
+}
