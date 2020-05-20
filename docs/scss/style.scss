@@ -586,9 +586,9 @@ h2.center-title {
 }
 
 //////////////////////////////////
-main {
-  height: 300vh;
-}
+// main {
+//   height: 300vh;
+// }
 
 .full-broadcast {
   margin-top: 60px;
@@ -750,3 +750,31 @@ main {
     }
   }
 }
+
+
+
+.social {
+  background: #EDF1F6;
+  padding-bottom: 40px;
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__element {
+    margin-right: 20px;
+    margin-top: 0;
+    width: 314px;
+    height: 400px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+    
+  }
+}
+
