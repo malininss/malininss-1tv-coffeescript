@@ -1,6 +1,8 @@
 @import 'fonts.scss';
 
 $normal-blue-color: #0757A8;
+$hover-blue-color: #2077D0; // Для кнопки. Остальные проверить
+$click-button-color: #013D78; //  Для кнопки. проверить
 
 * {
   margin: 0;
@@ -12,15 +14,57 @@ html {
   font-family: 'Roboto', sans-serif;
 }
 
-// h2 {
-//   margin-top: 20px;
-//   margin-bottom: 10px;
-// }
+a {
+  text-decoration: none;
+}
+
+h2.center-title {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  text-align: center;
+}
 
 .wrapper {
   max-width: 1024px;
   padding: 0 20px;
   margin: 0 auto;
+}
+
+.look-button {
+  display: block;
+  position: relative;
+  background: $normal-blue-color;
+  height: 30px;
+  width: 144px;
+  padding: 8px 10px 8px 22px;
+  border-radius: 44px;
+
+  font-style: normal;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &::before {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: url('../img/play-icon.svg') no-repeat;
+  }
+
+  &:hover {
+    background-color: $hover-blue-color;
+  }
+
+  &:active {
+    background-color: $click-button-color;
+  }
+
 }
 
 .sub-menu-arrow {
@@ -161,10 +205,12 @@ html {
     padding: 6px 6px;
     box-sizing: border-box;
     border: 2px solid transparent;
-
+    transition: none;
+    
     &:hover {
       border: 2px solid #0757A8;
       border-radius: 2px;
+      transition: border 0.5s;  
     }
 
     &.sub-menu-arrow {
@@ -233,12 +279,11 @@ html {
 
   &__widget-container {
     width: calc(100% - 312px);
-    height: 1000px;
     padding-right: 20px;
   }
   
   &__right-adv {
-    margin-top: 68px;
+    margin-top: 67px;
     width: 312px;
   }
 }
@@ -277,37 +322,208 @@ html {
     display: flex;
     position: relative;
     overflow: hidden;
+    margin-top: 30px;
     height: 76px;
   }
 
   &__left-arrow-container {
-    width: 30px;
+    width: 80px;
     height: 70px;
     background: #fff;
     position: absolute;
-    box-shadow: 19px 0px 12px 0px rgba(255, 255, 255, 1);
+    background: linear-gradient(90deg, #fff, #fff, #ffffff00);
     top: 0;
     left: 0;
-    // transform: translate(0, -25%);
   }
 
   &__right-arrow-container {
-    width: 30px;
-    height: 120px;
+    width: 80px;
+    height: 70px;
     background: #fff;
     position: absolute;
-    box-shadow: -19px 0px 12px 0px rgba(255, 255, 255, 1);
+    background: linear-gradient(90deg,#ffffff00, #fff, #fff);
     right: 0;
     top: 0;
-    // transform: translate(0, -25%);
   }
 
   &__arrow-circle {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: $normal-blue-color;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+
+    &_right {
+      right: 0;
+    }
+
+    &_left {
+      left: 0;
+    }
+
+    img {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      transition: none;
+
+      &:hover {
+        width: 44px;
+        height: 44px;
+        transition: all 0.2s;
+      }
+    }
   }
+
+  &__today-title {
+    font-size: 24px;
+    font-weight: normal;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  &__program-cards {
+    margin-top: 38px;
+  }
+
+  &__program-card {
+
+    &:not(:first-child) {
+    margin-top: 60px;
+    }
+
+  }
+
+  &__program-title-block {
+    display: flex;
+  }
+
+  &__program-time {
+    font-weight: bold;
+    font-size: 15px;
+    position: relative;
+    margin-left: 28px;
+    margin-right: 20px;
+
+    &::before {
+      display: block;
+      content: '';
+      position: absolute;
+      background: url('../img/tv-icon.svg');
+      width: 22px;
+      height: 22px;
+      left: -28px;
+      top: -5px;
+    }
+  }
+
+  &__program-title {
+    font-weight: bold;
+    font-size: 16px;
+    color: $normal-blue-color;
+    margin-right: 20px;
+  }
+
+  &__program-awards {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 20px;
+  }
+
+  &__program-award {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+
+    &_gold {
+      background-color: #FFCA0D;
+    }
+
+    &_silver {
+      margin-left: -10px;
+      background-color: #C5E4E5;
+    }
+
+    &_bronze {
+      margin-left: -10px;
+      background-color: #E9B756;
+    }
+  }
+
+  &__program-country {
+    margin-top: 2px;
+    margin-right: 20px;
+  }
+
+  &__program-channel {
+    margin-top: -2px;
+  }
+  
+  &__program-description {
+    margin-top: 16px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 20px;
+  }
+
+  &__program-artists {
+    position: relative;
+    margin-left: 28px;
+    margin-top: 13px;
+    
+    &::before {
+      display: block;
+      position: absolute;
+      content: '';
+      width: 24px;
+      height: 24px;
+      background: url('../img/microphone-icon.svg') no-repeat;
+      left: -28px;
+      top: -2px;
+    }
+  }
+
+  &__program-artist {
+    color: $normal-blue-color;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    border-bottom: 1px solid $normal-blue-color;
+  }
+
+  &__button-block {
+    display: flex;
+    margin-top: 20px;
+  }
+
+  &__life-now {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    margin-left: 42px;
+    margin-top: 8px;
+    color: #EE1919; 
+    position: relative;
+
+    &:before {
+      display: block;
+      content: '●';
+      position: absolute;
+      left: -16px;
+      top: -7px;
+      font-size: 24px;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -361,22 +577,95 @@ html {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
 .live-tv__banner {
+  position: sticky;
+  top: 20px;
   width: 100%;
   height: 600px;
-  background-color: lightgrey;
+  background: url('../img/right-banner.jpg') no-repeat;
 }
+
+//////////////////////////////////
 main {
-  height: 100vh;
+  height: 300vh;
+}
+
+.full-broadcast {
+  margin-top: 60px;
+  background: #EDF1F6;
+
+  &__title {
+    padding: 20px 0;
+  }
+
+  &__cards {
+    display: flex;
+  }
+
+
+  &__card {
+    position: relative;
+    border-radius: 4px;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    &::before {
+      display: block;
+      position: absolute;
+      content: '';
+      right: 10px;
+      top: 10px;
+      width: 16px;
+      height: 16px;
+      background: url('../img/play-icon.svg') no-repeat;
+    }
+
+    &:nth-child(odd) {
+      margin-right: 20px;
+    }
+  }
+
+
+  &__card-view {
+    position: absolute;
+    top: 14px;
+    left: 40px;
+    color: #fff;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+
+    &::before {
+      display: block;
+      content: '';
+      left: -25px;
+      top: 1px;
+      position: absolute;
+      width: 17px;
+      height: 10px;
+      background: url('../img/eye.svg') no-repeat;
+    }
+  }
+
+  &__card-title {
+    position: absolute;
+    bottom: 0;
+    padding: 40px 15px 15px 15px;
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 25px;
+    color: #fff;
+
+    background: linear-gradient(180deg,#ffffff00, #0D1F32);
+
+  }
+
+
+
+
 }
