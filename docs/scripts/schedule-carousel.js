@@ -153,7 +153,7 @@ const updateDayProgram = (date, schedule) => {
     programCard.appendChild(programDescription);
     programCard.appendChild(programArtists);
 
-    if (moment(date).format('L') === todayDate && item.time === '10:59') { // Тут нужно указать текущие время и дату
+    if (moment(date).format('L') === moment(todayDate).format('L') && item.time === '10:59') { // Тут нужно указать текущие время и дату
       const buttonBlock = createElem('div', 'tv-widget__button-block');
 
       const button = createElem('div', 'look-button');

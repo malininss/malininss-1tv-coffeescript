@@ -1,9 +1,11 @@
 .tv-widget {
+  max-width: 648px;
+  
   &__title {
     font-size: 20px;
     margin-bottom: 10px;
   }
-
+  
   &__sub-title {
     font-size: 16px;
     color: $main-blue-color;
@@ -257,6 +259,10 @@
         color: #EA6159;
         background: url('../img/shedule-white-red-back.svg') no-repeat;
         background-size: 66px 76px;
+
+        .tv-widget__line {
+          background-color: #EA6159;
+        }
       }
     }
 
