@@ -534,9 +534,11 @@
     }
   }
 
+  h3.tv-widget__today-title {
+    font-size: 20px;
+  }
 }
   
-
 @media (max-width: 900px) {
 
   header {
@@ -551,8 +553,8 @@
     width: 100%;
     padding: 0;
   }
-}
 
+}
 
 @media (max-width: 768px) {
 
@@ -564,10 +566,6 @@
     width: 100%;
     padding: 0;
   }
-
-
-  
-
 
   .full-broadcast {
 
@@ -601,15 +599,12 @@
       &_tw {
         width: 312px;
       }
-
     }
 
     &__vk {
       margin: 0 auto;
     }
   }
-
-  
 }
 
 
