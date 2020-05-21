@@ -5,7 +5,6 @@ const autoprefixer = require('gulp-autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 const concat = require('gulp-concat');
 
-
 gulp.task('sass', function(done) {
   gulp.src("docs/scss/*.scss")
     .pipe(sourcemaps.init())
@@ -23,6 +22,7 @@ gulp.task('scripts', function(done) {
     .pipe(concat('script.js'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest("docs/"))
+    
     .pipe(browserSync.stream());
   done();
 });
