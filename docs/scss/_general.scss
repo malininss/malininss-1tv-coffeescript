@@ -1,6 +1,6 @@
 $main-blue-color: #0757A8;
-$hover-main-blue-color: #2077D0; // Для кнопки. Остальные проверить
-$click-main-color: #013D78; //  Для кнопки. проверить
+$hover-main-blue-color: #2077D0;
+$click-main-color: #013D78;
 
 $main-black-color: #0D1F32;
 $dark-blue-color: #1B354A;
@@ -37,6 +37,11 @@ p {
 
 h2 {
   font-size: 20px;
+  font-weight: normal;
+}
+
+h3 {
+  font-weight: normal;
 }
 
 .center-title {
@@ -115,17 +120,6 @@ h2 {
     left: 0px;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 .header {
 
@@ -218,6 +212,10 @@ h2 {
     width: 35px;
     border-radius: 2px;
     transition: none;
+
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
     
     &_vk {
       background: url('../img/icons/vk-icon.svg') 50% 50% no-repeat;  
@@ -302,7 +300,6 @@ h2 {
         opacity: 1;
         visibility: visible;
       }
-      
     }
   }
 
@@ -350,10 +347,6 @@ h2 {
     }
   }
 
-  // &__sub-menu-item {
-
-  // }
-
   &__sub-menu-link {
     display: flex;
     position: relative;
@@ -386,14 +379,16 @@ h2 {
 
   &__columns {
     display: flex;
-    padding: 40px;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 38px;
   }
 
   &__left-column {
     width: calc(33.333333% - 10px);
     margin-right: 20px;
   }
-
 
   &__right-column {
     width: calc(66.66666% - 10px);
@@ -425,13 +420,13 @@ h2 {
   &__mobile-description {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
   }
 
   &__mobile-description-logo {
     width: 51px;
     height: 51px;
-    margin-right: 20px;
+    margin-right: 8px;
   }
 
   &__mobile-description-text {
@@ -467,14 +462,14 @@ h2 {
       position: absolute;
       width: 14px;
       height: 14px;
-      right: -22px;
+      right: -20px;
       bottom: 0;
       background: url('../img/right-circle-arrow.svg') no-repeat;
     }
   }
 
   &__notice-button-block {
-    margin-top: 60px;
+    margin-top: 54px;
   }
 
   &__notice-button {
@@ -512,13 +507,13 @@ h2 {
   }
 
   &__social-block {
-    margin-top: 60px;
+    margin-top: 55px;
     font-size: 12px;
     max-width: 173px;
   }
 
   &__social-block-text {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   &__social {
@@ -528,16 +523,17 @@ h2 {
   }
 
   &__social-link {
+    margin-left: -4px;
     display: block;
     height: 35px;
     width: 35px;
     border-radius: 2px;
     transition: none;
-    margin-right: 20px;
+    margin-right: 26px;
+    margin-bottom: 4px;
     
     &_vk {
       background: url('../img/icons/vk-wh-icon.svg') 50% 50% no-repeat;  
-      
     }
 
     &_fb {
@@ -571,18 +567,10 @@ h2 {
     }
   }
   
-
-
-
-
-
-
-  
-
   &__menu {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 30px;
+    margin-bottom: 76px;
 
     font-weight: bold;
     font-size: 12px;
@@ -597,14 +585,14 @@ h2 {
   &__menu-link {
     display: block;
     color: #fff;
-    padding: 15px 0;
+    padding: 10px 0;
   }
 
   &__forein-broadcasting {
     font-weight: bold;
     font-size: 12px;
     position: relative;
-    margin-left: 30px;
+    margin-left: 32px;
     color: #fff;
 
     &::before {
@@ -622,7 +610,7 @@ h2 {
   &__legal-text {
     font-size: 11px;
     line-height: 15px;
-    margin-top: 60px;
+    margin-top: 74px;
 
     color: #A4C5CC;
 
@@ -630,6 +618,88 @@ h2 {
       font-weight: bold;
       font-size: 12px;
       color: #fff;
+    }
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  header {
+    display: none;
+  }
+
+  .footer {
+    text-align: center;
+
+    &__columns {
+      flex-direction: column;
+    }
+
+    &__left-column, &__right-column {
+      width: 100%;
+    }
+
+    &__menu {
+      flex-direction: column;
+    }
+
+    &__menu-column {
+      width: 100%;
+      margin-top: 30px;
+    }
+
+    &__mobile-description {
+      justify-content: center;
+      text-align: left;
+    }
+
+    &__notice-button {
+      margin: 0 auto;
+    }
+
+    &__social {
+      height: auto;
+      justify-content: center;
+    }
+
+    &__social-block {
+      max-width: 220px;
+    }
+    
+
+    &__social-link {
+
+      margin-right: 0;
+
+      &:not(:last-child) {
+        margin-right: 4px;
+      }
+    }
+
+    &__social-block {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+
+@media (max-width: 360px) {
+  .tv-widget {
+
+    &__program-title-block {
+      flex-wrap: wrap;
+    }
+
+    &__program-title {
+      width: calc(100% - 90px);
+      margin-right: 0;
+      margin-bottom: 12px;
+    }
+    
+    &__today-title {
+      font-size: 20px;
     }
   }
 }

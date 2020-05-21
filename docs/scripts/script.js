@@ -1,3 +1,5 @@
+const todayDate = '2020-05-25' // Здесь нужно будет подтягивать актуальную дату.
+
 const refetToJson = (callback) => {
   fetch('test.json', {method: 'get'})
   .then(response => response.json())
@@ -53,7 +55,7 @@ const createScheduleList = (schedule) => {
     scheduleContainer.appendChild(scheduleItem);
   }
 
-  updateDayProgram('2020-05-25', schedule['2020-05-25']); // Здесь подставляем текущий день, чтобы показать актуальное расписание.
+  updateDayProgram(todayDate, schedule[todayDate]);
 
   const registerEvents = () => {
     const scheduleDays = Array.from(document.querySelectorAll('.tv-widget__schedule-item'));
@@ -61,7 +63,6 @@ const createScheduleList = (schedule) => {
     scheduleDays.forEach(item => {
       item.addEventListener('click', (event) => {
         let elem = event.target.closest('.tv-widget__schedule-item');
-        
         updateDayProgram(elem.getAttribute('data-date'), schedule[elem.getAttribute('data-date')])
       })
     })
@@ -71,6 +72,18 @@ const createScheduleList = (schedule) => {
 
 
 const updateDayProgram = (date, schedule) => {
+  const widgetTitleSpan = document.querySelector('.tv_widget__today-date');
+  const widgetTitleSpanText = moment(date).format('dddd, DD MMMM YYYY');
+
+  console.log(date === todayDate);
+  if (date === todayDate) {
+    widgetTitleSpan.textContent = ' на сегодня';
+  } else {
+    widgetTitleSpan.textContent = '';
+  }
+
+  widgetTitleSpan.textContent += '. ' + widgetTitleSpanText[0].toUpperCase() + widgetTitleSpanText.slice(1);;
+
   const programContainer = document.querySelector('.tv-widget__program-cards');
   programContainer.innerHTML = '';
   
@@ -128,18 +141,24 @@ const updateDayProgram = (date, schedule) => {
 
     const programArtists = createElem('div', 'tv-widget__program-artists');
 
-    item.artists.forEach(artistName => {
+    item.artists.forEach((artistName, index) => {
       const artistElem = createElem('a', 'tv-widget__program-artist');
-      artistElem.textContent = artistName;
+      artistElem.href = "#";
+      artistElem.textContent = artistName
 
       programArtists.appendChild(artistElem);
+
+      if (index !== item.artists.length - 1) {
+        programArtists.innerHTML += ', ';
+      }
+      
     });
 
     programCard.appendChild(titleBlock);
     programCard.appendChild(programDescription);
     programCard.appendChild(programArtists);
 
-    if (moment(date).format('L') === '25.05.2020' && item.time === '10:59') { // Тут нужно указать текущие время и дату
+    if (moment(date).format('L') === todayDate && item.time === '10:59') { // Тут нужно указать текущие время и дату
       const buttonBlock = createElem('div', 'tv-widget__button-block');
 
       const button = createElem('div', 'look-button');
