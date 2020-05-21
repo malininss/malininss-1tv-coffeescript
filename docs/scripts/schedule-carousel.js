@@ -57,7 +57,7 @@ const createScheduleList = (schedule) => {
     scheduleContainer.appendChild(scheduleItem);
   }
 
-  // Обновляем элементы приз загрузке страницы
+  // Обновляем элементы при загрузке страницы
   updateDayProgram(todayDate, schedule[todayDate]);
 
   // Регистрируем события
@@ -209,7 +209,7 @@ const pushSlider = (direction = 'right') => {
       numberOfSteps = 5;
   }
   
-  let remainedToScroll =  itemsNumber - itemsScrolled - numberOfSteps - 2; // Определяем, сколько элементов предстоить прокрутить
+  let remainedToScroll =  itemsNumber - itemsScrolled - numberOfSteps - 2; // Определяем, сколько элементов предстоить прокрутить. 
 
   if (direction === 'right') {
 
