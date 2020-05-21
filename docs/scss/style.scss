@@ -1,5 +1,6 @@
 @import 'fonts';
 @import 'general';
+@import 'schedule-carousel';
 
 .live-tv {
   display: flex;
@@ -15,307 +16,14 @@
     width: 312px;
     z-index: -1000;
   }
-}
-
-.tv-widget {
-  &__title {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-
-  &__sub-title {
-    font-size: 16px;
-    color: $main-blue-color;
-    margin-bottom: 15px;
-  }
-
-  &__player {
+  
+  &__banner {
+    position: sticky;
+    top: 20px;
     width: 100%;
-    height: 365px;
-    background: url('../img/widget-img.png') no-repeat;
-    background-size: cover;
+    height: 612px;
+    background: url('../img/right-banner.jpg') 50% 50% no-repeat;
   }
-
-  &__schedule {
-    margin-top: 50px;
-  }
-
-  &__schedule-title {
-    font-size: 20px;
-  }
-
-  &__schedule-corousel {
-    user-select: none;
-    display: flex;
-    position: relative;
-    overflow: hidden;
-    padding-top: 3px;
-    margin-top: 18px;
-    height: 76px;
-  }
-
-  &__left-arrow-container {
-    width: 60px;
-    height: 76px;
-    background: #fff;
-    position: absolute;
-    background: linear-gradient(90deg, #fff 70%, #ffffff00);
-    top: 0;
-    left: 0;
-    z-index: 100;
-  }
-
-  &__right-arrow-container {
-    width: 60px;
-    height: 78px;
-    background: #fff;
-    position: absolute;
-    background: linear-gradient(270deg, #fff 70%, #ffffff00);
-    right: 0;
-    top: 0;
-    z-index: 100;
-  }
-
-  &__arrow-circle {
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
-
-    &_right {
-      right: 0;
-    }
-
-    &_left {
-      left: 0;
-    }
-
-    img {
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-      transition: none;
-
-      &:hover {
-        width: 44px;
-        height: 44px;
-        transition: all 0.2s;
-      }
-    }
-  }
-
-  &__today-title {
-    font-size: 24px;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    max-width: 355px;
-  }
-
-  &__program-cards {
-    margin-top: 38px;
-  }
-
-  &__program-card {
-
-    &:not(:first-child) {
-    margin-top: 60px;
-    }
-
-  }
-
-  &__program-title-block {
-    display: flex;
-  }
-
-  &__program-time {
-    font-weight: bold;
-    font-size: 15px;
-    position: relative;
-    margin-left: 28px;
-    margin-right: 20px;
-
-    &::before {
-      display: block;
-      content: '';
-      position: absolute;
-      background: url('../img/icons/tv-icon.svg');
-      width: 22px;
-      height: 22px;
-      left: -28px;
-      top: -5px;
-    }
-  }
-
-  &__program-title {
-    font-weight: bold;
-    font-size: 16px;
-    color: $main-blue-color;
-    margin-right: 20px;
-  }
-
-  &__program-awards {
-    display: flex;
-    flex-direction: row-reverse;
-    margin-right: 20px;
-  }
-
-  &__program-award {
-    width: 20px;
-    height: 20px;
-    border: 2px solid #fff;
-    border-radius: 50%;
-
-    &_gold {
-      background-color: #FFCA0D;
-    }
-
-    &_silver {
-      margin-left: -10px;
-      background-color: #C5E4E5;
-    }
-
-    &_bronze {
-      margin-left: -10px;
-      background-color: #E9B756;
-    }
-  }
-
-  &__program-country {
-    margin-top: 2px;
-    margin-right: 20px;
-  }
-
-  &__program-channel {
-    margin-top: -2px;
-  }
-  
-  &__program-description {
-    margin-top: 16px;
-    font-size: 15px;
-    line-height: 20px;
-  }
-
-  &__program-artists {
-    position: relative;
-    margin-left: 34px;
-    margin-top: 12px;
-    
-    &::before {
-      display: block;
-      position: absolute;
-      content: '';
-      width: 24px;
-      height: 24px;
-      background: url('../img/icons/microphone-icon.svg') no-repeat;
-      left: -34px;
-      top: -2px;
-    }
-  }
-
-  &__program-artist {
-    color: $main-blue-color;
-    font-weight: 500;
-    font-size: 15px;
-    border-bottom: 1px solid $main-blue-color;
-  }
-
-  &__button-block {
-    display: flex;
-    margin-top: 20px;
-  }
-
-  &__life-now {
-    font-weight: 500;
-    font-size: 14px;
-    margin-left: 42px;
-    margin-top: 8px;
-    color: #EE1919; 
-    position: relative;
-
-    &:before {
-      display: block;
-      content: '●';
-      position: absolute;
-      left: -16px;
-      top: -7px;
-      font-size: 24px;
-    }
-  }
-
-  &__schedule-items {
-    display: flex;
-    position: absolute;
-    z-index: 0;
-    left: 0px;
-    left: 60px;
-    transition: all 0.5s;
-  }
-  
-  &__schedule-item {
-    cursor: pointer;
-    min-width: 60px;
-    width: 60px;
-    margin-right: 24px;
-    padding: 4px;
-    height: 70px;
-    background: url('../img/shedule-blue-back.svg') no-repeat;
-    text-align: center;
-    color: #fff;
-
-    &:hover {
-      width: 66px;
-      height: 76px;
-      background-size: 66px 76px;
-      margin-right: 20px;
-      margin-left: -2px;
-      margin-top: -3px;
-    }
-
-    &_weekend {
-      background: url('../img/shedule-red-back.svg') no-repeat;
-      
-      &:hover {
-        color: #EA6159;
-        background: url('../img/shedule-white-red-back.svg') no-repeat;
-        background-size: 66px 76px;
-      }
-    }
-
-    &_friday {
-      width: 20px;
-      background: url('../img/shedule-white-blue-back.svg') no-repeat;
-      background-size: 60px 70px;
-      color: #0757A8;
-    }
-  }
-
-  &__day {
-    font-size: 30px;
-    font-weight: bold;
-  }
-
-  &__mounth {
-    font-size: 11px;
-    font-weight: bold;
-  }
-  
-  &__line {
-    width: 100%;
-    height: 1px;
-    background: #fff;
-  }
-
-  &__weekday {
-    font-size: 11px;
-    font-weight: 500;
-  }
-}
-
-.live-tv__banner {
-  position: sticky;
-  top: 20px;
-  width: 100%;
-  height: 612px;
-  background: url('../img/right-banner.jpg') 50% 50% no-repeat;
 }
 
 .full-broadcast {
@@ -426,14 +134,11 @@
     position: absolute;
     bottom: 0;
     padding: 40px 18px 24px 10px;
-
     font-weight: bold;
     font-size: 18px;
     line-height: 25px;
     color: #fff;
-
     background: linear-gradient(180deg,#ffffff00, #0D1F32);
-
   }
 
   &__adv-block {
