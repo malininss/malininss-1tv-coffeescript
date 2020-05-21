@@ -1,5 +1,5 @@
 const refetToJson = (callback) => {
-  fetch('../test.json', {method: 'get'})
+  fetch('test.json', {method: 'get'})
   .then(response => response.json())
   .then(schedule => {
     callback(schedule)
