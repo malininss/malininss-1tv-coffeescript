@@ -1,3 +1,185 @@
+const refetToJson = (callback) => {
+  fetch('../test.json', {method: 'get'})
+  .then(response => response.json())
+  .then(schedule => {
+    callback(schedule)
+  })
+  .catch(err => console.log(err))
+}
+
+const createScheduleList = (schedule) => {
+  
+  const scheduleContainer = document.querySelector('.tv-widget__schedule-items');
+  
+  for (key in schedule) {
+
+    moment.locale('ru');
+    const date = moment(key); 
+
+    const dayNumber = date.format('DD');
+    const mounth = date.format('MMMM');
+    const dayWeek = date.format('dd');
+
+    const scheduleItem = document.createElement('div');
+    scheduleItem.classList.add('tv-widget__schedule-item');
+    scheduleItem.dataset.date = key;
+
+    if (dayWeek === 'сб' || dayWeek === 'вс') {
+      scheduleItem.classList.add('tv-widget__schedule-item_weekend');
+    } else if (dayWeek === 'пт') {
+      scheduleItem.classList.add('tv-widget__schedule-item_friday');
+    }
+  
+    const scheduleDay = document.createElement('div');
+    scheduleDay.classList.add('tv-widget__day');
+    scheduleDay.textContent = dayNumber;
+
+    const scheduleMounth = document.createElement('div');
+    scheduleMounth.classList.add('tv-widget__mounth');
+    scheduleMounth.textContent = mounth;
+  
+    const scheduleLine = document.createElement('div');
+    scheduleLine.classList.add('tv-widget__line');
+
+    const scheduleWeekday = document.createElement('div');
+    scheduleWeekday.classList.add('tv-widget__weekday');
+    scheduleWeekday.textContent = dayWeek;
+  
+    scheduleItem.appendChild(scheduleDay);
+    scheduleItem.appendChild(scheduleMounth);
+    scheduleItem.appendChild(scheduleLine);
+    scheduleItem.appendChild(scheduleWeekday);
+
+    scheduleContainer.appendChild(scheduleItem);
+  }
+
+  updateDayProgram('2020-05-25', schedule['2020-05-25']); // Здесь подставляем текущий день, чтобы показать актуальное расписание.
+
+  const registerEvents = () => {
+    const scheduleDays = Array.from(document.querySelectorAll('.tv-widget__schedule-item'));
+
+    scheduleDays.forEach(item => {
+      item.addEventListener('click', (event) => {
+        let elem = event.target.closest('.tv-widget__schedule-item');
+        
+        updateDayProgram(elem.getAttribute('data-date'), schedule[elem.getAttribute('data-date')])
+      })
+    })
+  }
+  registerEvents();
+}
+
+
+const updateDayProgram = (date, schedule) => {
+  const programContainer = document.querySelector('.tv-widget__program-cards');
+  programContainer.innerHTML = '';
+  
+  const createElem = function(tag, elemClass) {
+    const elem = document.createElement(tag);
+    elem.classList.add(elemClass);
+    return elem;
+  }
+
+  schedule.forEach((item, index) => {
+
+    const programCard = createElem('div', 'tv-widget__program-card');
+    const titleBlock = createElem('div', 'tv-widget__program-title-block');
+          
+    const programTime = createElem('div', 'tv-widget__program-time');
+    programTime.textContent = item.time;
+
+    const programTitle = createElem('a', 'tv-widget__program-title');
+    programTitle.href = "#";
+    programTitle.textContent = item.title;
+
+    const awards = createElem('div', 'tv-widget__program-awards');
+
+    for (key in item.awards) {
+      if (item.awards[key] === 'true') {
+        const award = createElem('div', 'tv-widget__program-award');
+        award.classList.add('tv-widget__program-award_' + key);
+        awards.appendChild(award);
+      }
+    }
+
+    const programCountry = createElem('div', 'tv-widget__program-country');
+  
+    const countryImg = document.createElement('img');
+    countryImg.src = 'img/icons/russia-icon.svg';
+    countryImg.alt = item.country;
+
+    programCountry.appendChild(countryImg);
+  
+    const tvChannel = createElem('div', 'tv-widget__program-channel');
+    const channelImg = document.createElement('img');
+    channelImg.src = 'img/icons/1tv-icon.svg';
+    channelImg.alt = item.channel;
+
+    tvChannel.appendChild(channelImg);
+    titleBlock.appendChild(programTime);
+    titleBlock.appendChild(programTitle);
+    titleBlock.appendChild(awards);
+    if (item.country) titleBlock.appendChild(programCountry);
+
+    titleBlock.appendChild(tvChannel);
+
+    const programDescription = createElem('div', 'tv-widget__program-description');
+    programDescription.textContent = item.description;
+
+    const programArtists = createElem('div', 'tv-widget__program-artists');
+
+    item.artists.forEach(artistName => {
+      const artistElem = createElem('a', 'tv-widget__program-artist');
+      artistElem.textContent = artistName;
+
+      programArtists.appendChild(artistElem);
+    });
+
+    programCard.appendChild(titleBlock);
+    programCard.appendChild(programDescription);
+    programCard.appendChild(programArtists);
+
+    if (moment(date).format('L') === '25.05.2020' && item.time === '10:59') { // Тут нужно указать текущие время и дату
+      const buttonBlock = createElem('div', 'tv-widget__button-block');
+
+      const button = createElem('div', 'look-button');
+      button.textContent = 'Смотреть';
+
+      const liveTitle = createElem('div', 'tv-widget__life-now');
+      liveTitle.textContent = 'Сейчас в эфире';
+
+      buttonBlock.appendChild(button);
+      buttonBlock.appendChild(liveTitle);
+
+      programCard.appendChild(buttonBlock);
+
+    }
+    programContainer.appendChild(programCard); 
+  })
+} 
+
+
+refetToJson(createScheduleList);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// слайдер
 const arrows = document.querySelectorAll('.tv-widget__arrow-circle');
 
 const carouselContainer = document.querySelector('.tv-widget__schedule-corousel');
@@ -9,12 +191,11 @@ let lastSlide = false;
 let itemWidth = 84; // Ширина элемента
 let numberOfSteps; // Количество шагов, которое предстоит сделать 
 let currentStepWidth = 60; // Изначальное остояние left 
-const itemsNumber = document.querySelectorAll('.tv-widget__schedule-item').length; // Количество элементов
 
 let itemsScrolled = 0; //Количество элементов, которые мы скроллим
 
 const pushSlider = (direction = 'right') => {
-
+  const itemsNumber = document.querySelectorAll('.tv-widget__schedule-item').length; // Количество элементов
   const containerWidth = carouselContainer.offsetWidth; // Ширина контейнера
 
   switch(true) { // В зависимости от ширины контейнера определяем, сколько элементов надо прокрутить
@@ -54,8 +235,8 @@ const pushSlider = (direction = 'right') => {
     itemsScrolled += numberOfSteps;
 
     if (lastSlide && remainedToScroll !== 0) {
-      // currentStepWidth -= 60;
-      currentStepWidth = -2016 + containerWidth - 40;
+      console.log(itemsNumber);
+      currentStepWidth = ((-1) * itemWidth * itemsNumber) + containerWidth - 40;
       console.log('Добавляем отступ для последнего слайда');
     }
 
@@ -82,11 +263,8 @@ const pushSlider = (direction = 'right') => {
       lastSlide = false;
     }
   }
-
   carousel.style.left = currentStepWidth.toString() + 'px';
-
 }
-
 Array.from(arrows).forEach(item => {
   item.addEventListener('click', (event) => {
     if (event.target.parentElement.classList.contains('tv-widget__arrow-circle_right')) {

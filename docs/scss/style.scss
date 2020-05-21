@@ -258,7 +258,7 @@
     padding: 4px;
     height: 70px;
     // background: $main-blue-color;
-    background: url('../img/shedule-blue-back.svg');
+    background: url('../img/shedule-blue-back.svg') no-repeat;
     text-align: center;
     color: #fff;
 
@@ -270,6 +270,24 @@
       margin-left: -2px;
       margin-top: -3px;
     }
+
+    &_weekend {
+      background: url('../img/shedule-red-back.svg') no-repeat;
+      
+      &:hover {
+        color: #EA6159;
+        background: url('../img/shedule-white-red-back.svg') no-repeat;
+        background-size: 66px 76px;
+      }
+    }
+
+    &_friday {
+      width: 20px;
+      background: url('../img/shedule-white-blue-back.svg') no-repeat;
+      background-size: 60px 70px;
+      color: #0757A8;
+    }
+
   }
 
   &__day {
@@ -504,4 +522,26 @@
       margin-right: 0;
     }
   }
+}
+
+
+@media (max-width: 900px) {
+
+  header {
+    display: none;
+  }
+
+  footer {
+    display: none;
+  }
+
+  aside {
+    display: none;
+  }
+
+  .live-tv__widget-container {
+    width: 100%;
+    padding: 0;
+  }
+  
 }
