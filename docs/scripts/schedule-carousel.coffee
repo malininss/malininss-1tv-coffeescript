@@ -236,6 +236,5 @@ Array.from(arrows).forEach (item) ->
     return
   return
 
-
 # Создаём календарь
 referToJson createScheduleList

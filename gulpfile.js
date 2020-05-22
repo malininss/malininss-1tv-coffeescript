@@ -5,6 +5,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 const concat = require('gulp-concat');
 const coffee = require('gulp-coffee');
+const babel = require('gulp-babel');
 
 gulp.task('sass', function(done) {
   gulp.src("docs/scss/*.scss")
@@ -17,13 +18,18 @@ gulp.task('sass', function(done) {
   done();
 });
 
+
 gulp.task('scripts', function(done) {
   gulp.src("docs/scripts/*.coffee")
     .pipe(sourcemaps.init())
     .pipe(coffee({ bare: true }))
     .pipe(concat('script.js'))
+    .pipe(babel({
+      presets: ['@babel/env']
+    }))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest("docs/"))
+    
     .pipe(browserSync.stream());
   done();
 });
