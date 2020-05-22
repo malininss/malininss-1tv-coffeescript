@@ -97,7 +97,7 @@ updateDayProgram = (date, schedule) ->
     for key of item.awards
       if item.awards[key] is 'true'
         award = createElem('div', 'tv-widget__program-award')
-        award.classList.add 'tv-widget__program-award_' + key
+        award.classList.add "tv-widget__program-award_#{key}"
         awards.appendChild award
 
     programCountry = createElem('div', 'tv-widget__program-country')
@@ -224,7 +224,7 @@ pushSlider = (direction = 'right') ->
     if lastSlide
       lastSlide = false
 
-  carousel.style.left = currentStepWidth.toString() + 'px'
+  carousel.style.left = "#{currentStepWidth.toString()}px"
   return
 
 Array.from(arrows).forEach (item) ->
