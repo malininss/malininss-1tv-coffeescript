@@ -79,7 +79,7 @@ updateDayProgram = (date, schedule) ->
     widgetTitleSpan.textContent = ' на сегодня'
   else
     widgetTitleSpan.textContent = ''
-  widgetTitleSpan.textContent += ". #{widgetTitleSpanText[0].toUpperCase() + widgetTitleSpanText.slice(1)}"
+  widgetTitleSpan.textContent += ". #{widgetTitleSpanText[0].toUpperCase()}#{widgetTitleSpanText.slice(1)}"
 
   programContainer = document.querySelector('.tv-widget__program-cards')
   programContainer.innerHTML = ''
