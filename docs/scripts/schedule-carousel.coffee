@@ -30,9 +30,9 @@ createScheduleList = (schedule) ->
     scheduleItem = createElem('div', 'tv-widget__schedule-item')
     scheduleItem.dataset.date = key
     
-    if dayWeek == 'сб' or dayWeek == 'вс'
+    if dayWeek is 'сб' or dayWeek is 'вс'
       scheduleItem.classList.add 'tv-widget__schedule-item_weekend'
-    else if dayWeek == 'пт'
+    else if dayWeek is 'пт'
       scheduleItem.classList.add 'tv-widget__schedule-item_friday'
       
     scheduleDay = createElem('div', 'tv-widget__day')
@@ -75,11 +75,11 @@ updateDayProgram = (date, schedule) ->
   widgetTitleSpan = document.querySelector('.tv_widget__today-date')
   widgetTitleSpanText = moment(date).format('dddd, DD MMMM YYYY')
 
-  if date == todayDate
+  if date is todayDate
     widgetTitleSpan.textContent = ' на сегодня'
   else
     widgetTitleSpan.textContent = ''
-  widgetTitleSpan.textContent += '. ' + widgetTitleSpanText[0].toUpperCase() + widgetTitleSpanText.slice(1)
+  widgetTitleSpan.textContent += '. #{widgetTitleSpanText[0].toUpperCase() + widgetTitleSpanText.slice(1)}'
 
   programContainer = document.querySelector('.tv-widget__program-cards')
   programContainer.innerHTML = ''
@@ -95,7 +95,7 @@ updateDayProgram = (date, schedule) ->
     awards = createElem('div', 'tv-widget__program-awards')
     
     for key of item.awards
-      if item.awards[key] == 'true'
+      if item.awards[key] is 'true'
         award = createElem('div', 'tv-widget__program-award')
         award.classList.add 'tv-widget__program-award_' + key
         awards.appendChild award
@@ -143,7 +143,7 @@ updateDayProgram = (date, schedule) ->
     programCard.appendChild programArtists
 
     # Тут нужно указать текущие время и дату. Используется для показа кнопок "Смотреть" и "Сейчас в эфире"
-    if moment(date).format('L') == moment(todayDate).format('L') and item.time == '10:59'
+    if moment(date).format('L') is moment(todayDate).format('L') and item.time is '10:59'
 
       buttonBlock = createElem('div', 'tv-widget__button-block')
       button = createElem('div', 'look-button')
@@ -194,14 +194,14 @@ pushSlider = (direction = 'right') ->
   # Определяем, сколько элементов предстоить прокрутить. 
   remainedToScroll = itemsNumber - itemsScrolled - numberOfSteps - 2
 
-  if direction == 'right'
+  if direction is 'right'
     if remainedToScroll < numberOfSteps # Если количество элементов, сколько можно прокрутить, меньше количества шагов
       numberOfSteps = remainedToScroll # Говорим, сколько шагов прокручиваем
       lastSlide = true # Определяем, что слайд последний
 
   slideWidth = itemWidth * numberOfSteps  # Определяем ширину слайда (насколько нужно прокрутить)
 
-  if direction == 'right'
+  if direction is 'right'
     currentStepWidth -= slideWidth
     itemsScrolled += numberOfSteps
 
